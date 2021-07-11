@@ -1,7 +1,28 @@
+csv =""" 
+particle,symbol,cols,rows,generation,category,class,particle_type,mass,charge,spin,statistics,symbolgray,symbolwhite
+up,u,1,1,I,fermion,quark,Matter particle,≃ 2.2 MeV,⅔,½,Fermi–Dirac,https://mlwild.net/images/upquark-gray.svg,https://mlwild.net/images/upquark-white.svg
+charm,c,2,1,II,fermion,quark,Matter particle,≃ 1.28 GeV,⅔,½,Fermi–Dirac,https://mlwild.net/images/charmquark-gray.svg,https://mlwild.net/images/charmquark-white.svg
+top,t,3,1,III,fermion,quark,Matter particle,≃ 73.1 GeV,⅔,½,Fermi–Dirac,https://mlwild.net/images/topquark-gray.svg,https://mlwild.net/images/topquark-white.svg
+down,d,1,2,I,fermion,quark,Matter particle,≃ 4.7 MeV,-⅓,½,Fermi–Dirac,https://mlwild.net/images/downquark-gray.svg,https://mlwild.net/images/downquark-white.svg
+strange,s,2,2,II,fermion,quark,Matter particle,≃ 96 MeV,-⅓,½,Fermi–Dirac,https://mlwild.net/images/strangequark-gray.svg,https://mlwild.net/images/strangequark-white.svg
+bottom,b,3,2,III,fermion,quark,Matter particle,≃ 4.18 GeV,-⅓,½,Fermi–Dirac,https://mlwild.net/images/bottomquark-gray.svg,https://mlwild.net/images/bottomquark-white.svg
+electron,e,1,3,I,fermion,lepton,Matter particle,≃ 0.511 MeV,-1,½,Fermi–Dirac,https://mlwild.net/images/electron-gray.svg,https://mlwild.net/images/electron-white.svg
+muon,μ,2,3,II,fermion,lepton,Matter particle,≃ 105.66 MeV,-1,½,Fermi–Dirac,https://mlwild.net/images/muon-gray.svg,https://mlwild.net/images/muon-white.svg
+tauon,τ,3,3,III,fermion,lepton,Matter particle,≃ 1.7768 GeV,-1,½,Fermi–Dirac,https://mlwild.net/images/tauon-gray.svg,https://mlwild.net/images/tauon-white.svg
+electron neutrino,ν_e,1,4,I,fermion,lepton,Matter particle,< 1.0 eV,0,½,Fermi–Dirac,https://mlwild.net/images/eneutrino-gray.svg,https://mlwild.net/images/eneutrino-white.svg
+muon neutrino,ν_μ,2,4,II,fermion,lepton,Matter particle,< 0.17 MeV,0,½,Fermi–Dirac,https://mlwild.net/images/muneutrino-gray.svg,https://mlwild.net/images/muneutrino-white.svg
+tauon neutrino,ν_τ,3,4,III,fermion,lepton,Matter particle,< 18.2 MeV,0,½,Fermi–Dirac,https://mlwild.net/images/tauneutrino-gray.svg,https://mlwild.net/images/tauneutrino-white.svg
+gluon,g,4,1,vb,boson,vector boson,Force carrier,= 0 GeV,0,1,Bose-Einstein,https://mlwild.net/images/gluon-gray.svg,https://mlwild.net/images/gluon-white.svg
+photon,γ,4,2,vb,boson,vector boson,Force carrier,= 0 GeV,0,1,Bose-Einstein,https://mlwild.net/images/photon-gray.svg,https://mlwild.net/images/photon-white.svg
+Z boson,Z,4,3,vb,boson,vector boson,Force carrier,≃ 91.19 GeV,0,1,Bose-Einstein,https://mlwild.net/images/zboson-gray.svg,https://mlwild.net/images/zboson-white.svg
+W boson,W,4,4,vb,boson,vector boson,Force carrier,≃80.39 GeV,±1,1,Bose-Einstein,https://mlwild.net/images/wboson-gray.svg,https://mlwild.net/images/wboson-white.svg
+higgs,H,5,1,sb,boson,scalar boson,Scalar particle,≃124.97 GeV,0,0,Bose-Einstein,https://mlwild.net/images/higgs-gray.svg,https://mlwild.net/images/higgs-white.svg
+"""
+
 from panel.layout.base import WidgetBox
 from bokeh.plotting import figure
 from bokeh.models import WMTSTileSource, BBoxTileSource, QUADKEYTileSource
-p = figure(x_range=(-2000000, 6000000), y_range=(-1000000, 7000000), width=400, height=300,
+p = figure(x_range=(8000000, 16000000), y_range=(000000, 8000000), width=400, height=300,
            x_axis_type="mercator", y_axis_type="mercator", sizing_mode='stretch_both')
 p.grid.grid_line_alpha = 0.1
 p.toolbar_location = None
@@ -154,6 +175,8 @@ css = """
    opacity: 1;
  }
 
+h1 { color: #d54d7b; font-family: "Great Vibes", cursive; font-size: 25px; line-height: 30px; 
+font-weight: 800; margin-bottom: 0px; margin-top: 10px; text-align: center; text-shadow: 0 1px 1px #fff; }
 
 .drag_icon {
     display: inline-block;
@@ -174,7 +197,7 @@ css = """
 
 .drag_icon {
   background-color: transparent;
-  border-radius: 50%;
+  border-radius: 100%;
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
@@ -188,14 +211,14 @@ css = """
 }
 .drag_icon:hover, .drag_icon:focus, .drag_icon:active {
   background-color: transparent;//#2098D1;
-  border-radius: 50%;
+  border-radius: 100%;
   color: white;
   font-weight:bold;
 }
 
 .drag_icon:hover, .drag_icon:focus, .drag_icon:active {
   background-color: transparent;//#2098D1;
-  border-radius: 50%;
+  border-radius: 100%;
   font-weight: 900 !important;
   color: white;
 }
@@ -213,6 +236,7 @@ css = """
 .icon_bar{
     background-color: #2f2f31;
     color:white;
+    margin:0px;
 }
 
 body {
@@ -230,6 +254,15 @@ body {
 }
 
 html, body {margin: 0; height: 100%;  position: fixed; background-color: white;}
+
+.subheader:hover {
+    background-color: white;
+    border-bottom: solid 3px orange;
+}
+
+.hda:hover {
+    border-right: solid 3px orange;
+}
 """  
 
 css_file = ['https://fonts.googleapis.com/icon?family=Material+Icons']
@@ -304,8 +337,6 @@ def colorce():
     from bokeh.plotting import figure
     from bokeh.sampledata.perceptions import probly
 
-    output_file("ridgeplot.html")
-
     def ridge(category, data, scale=20):
         return list(zip([category]*len(data), scale*data))
 
@@ -375,40 +406,18 @@ svg_pivot = f""" <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 
 svg_tune = f""" <svg xmlns="http://www.w3.org/2000/svg" height="{h}px" viewBox="0 0 24 24" width="{h}px" fill="{color}"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M5 2c0-.55-.45-1-1-1s-1 .45-1 1v4H1v10c0 1.3.84 2.4 2 2.82V23h2v-4.18C6.16 18.4 7 17.3 7 16V6H5V2zM4 17c-.55 0-1-.45-1-1v-2h2v2c0 .55-.45 1-1 1zm-1-5V8h2v4H3zM13 2c0-.55-.45-1-1-1s-1 .45-1 1v4H9v10c0 1.3.84 2.4 2 2.82V23h2v-4.18c1.16-.42 2-1.52 2-2.82V6h-2V2zm-1 15c-.55 0-1-.45-1-1v-2h2v2c0 .55-.45 1-1 1zm-1-5V8h2v4h-2zm10-6V2c0-.55-.45-1-1-1s-1 .45-1 1v4h-2v10c0 1.3.84 2.4 2 2.82V23h2v-4.18c1.16-.42 2-1.52 2-2.82V6h-2zm-1 11c-.55 0-1-.45-1-1v-2h2v2c0 .55-.45 1-1 1zm-1-5V8h2v4h-2z"/></svg>"""
 
 col = pn.Column(pn.pane.SVG(svg_vsc, margin=(0,0,25,0)),
-            pn.pane.SVG(svg_ar),pn.pane.SVG(svg_table), pn.pane.SVG(svg_triangle),
-            pn.pane.SVG(svg_dev),pn.pane.SVG(svg_drive_file), pn.pane.SVG(svg_settings), 
-            pn.Spacer(height=175), 
-            pn.pane.SVG(svg_logout), pn.Spacer(sizing_mode='stretch_height'), 
+            pn.pane.SVG(svg_ar, css_classes=['hda', 's1']),
+            pn.pane.SVG(svg_table, css_classes=['hda', 's2']), 
+            pn.pane.SVG(svg_triangle, css_classes=['hda', 's3']),
+            pn.pane.SVG(svg_dev, css_classes=['hda', 's4']),
+            pn.pane.SVG(svg_drive_file, css_classes=['hda', 's5']), 
+            pn.pane.SVG(svg_settings, css_classes=['hda', 's6']), 
+            pn.Spacer(height=150), 
+            pn.pane.SVG(svg_logout, css_classes=['hda','s7']), pn.Spacer(sizing_mode='stretch_height'), 
             css_classes = ['icon_bar'],  margin=0,
-            sizing_mode='stretch_height')
+            sizing_mode='stretch_height', width=80)
 
-rb = pn.pane.HTML(""" 
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none;right:0;" id="rightMenu">
-  <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
-  <a href="#" class="w3-bar-item w3-button">Link 1</a>
-  <a href="#" class="w3-bar-item w3-button">Link 2</a>
-  <a href="#" class="w3-bar-item w3-button">Link 3</a>
-</div>
-
-<div class="w3-teal">
-    <button class="w3-button w3-teal w3-xlarge w3-right" onclick="openRightMenu()">&#9776;</button>
-  <div class="w3-container">
-    <h1>My Page</h1>
-  </div>
-</div>
-
-<script>
-function openRightMenu() {
-  document.getElementById("rightMenu").style.display = "block";
-}
-
-function closeRightMenu() {
-  document.getElementById("rightMenu").style.display = "none";
-}
-</script>
-
-""")
-
+icon_numbers  = pn.pane.HTML('')
 
 
 df = pd.DataFrame({
@@ -422,18 +431,37 @@ df = pd.DataFrame({
 df_widget = pn.widgets.Tabulator(df)
 
 
+grid = pn.GridBox('', 'light', 'dark', ncols=3)
+
+for color in pn.indicators.LoadingSpinner.param.color.objects:
+    dark = pn.indicators.LoadingSpinner(width=50, height=50, value=True, color=color, bgcolor='dark')
+    light = pn.indicators.LoadingSpinner(width=50, height=50, value=True, color=color, bgcolor='light')
+    grid.extend((color, light, dark))
+
+sli = pn.widgets.IntSlider(name='counting',value=0,end=100)
+
 tm = (19,9,0,0)
-header = pn.Row( pn.Spacer(width=30), pn.pane.HTML('<h1>App Title</h1>'),  pn.Spacer(width=100), text_field,
+header = pn.Row( icon_numbers, pn.Spacer(width=30), pn.pane.HTML('<h1>Panel VSC </h1>', margin=(14,0,0,0)),  pn.Spacer(width=100), text_field,
                 pn.Spacer(sizing_mode='stretch_width'),
-                pn.pane.SVG(svg_subject,margin=tm),
-            pn.pane.SVG(svg_notif,margin=tm), pn.pane.SVG(svg_tune,margin=tm), 
-            pn.pane.SVG(svg_mediation,margin=tm), pn.pane.SVG(svg_pivot,margin=tm),
-            pn.layout.DragMenu(df_widget,icon=pn.pane.SVG(svg_subject, margin=(10,0,0,0)), background_color='white'),            
-            sizing_mode='stretch_width')
+                pn.pane.SVG(svg_subject,margin=tm, css_classes=['subheader']),
+            pn.pane.SVG(svg_notif,margin=tm, css_classes=['subheader']), 
+            pn.layout.DragMenu(sli,icon=pn.pane.SVG(svg_tune, margin=(14,0,0,0), css_classes=['subheader']), 
+                                background_color='white',color='black'),
+            pn.pane.SVG(svg_mediation,margin=tm, css_classes=['subheader']), 
+            pn.layout.DragMenu(grid,icon=pn.pane.SVG(svg_pivot, margin=(14,0,0,0), css_classes=['subheader']), 
+                                background_color='white',color='black'),
+            pn.layout.DragMenu(df_widget,icon=pn.pane.SVG(svg_subject, margin=(14,0,0,0), css_classes=['subheader']), 
+                            background_color='white'),    sizing_mode='stretch_width')
+
+
+
+
+
+
 
 sub_header = pn.Row(pn.widgets.Checkbox(name='Checkbox', css_classes=['cb_custom']), 
                     pn.Spacer(sizing_mode='stretch_width'),
-                    pn.pane.SVG(svg_subject, margin=(-6,0,0,0)),
+                    pn.pane.SVG(svg_subject, margin=(-6,0,0,0), css_classes=['subheader']),
                     sizing_mode='stretch_width', height=25 
 )
 
@@ -443,7 +471,9 @@ import holoviews as hv
 
 gspec[4, :3] = pn.WidgetBox(linu)
 gspec[:2, 0] = pn.WidgetBox(p21, margin=5)
-gspec[:4, 1:3] = pn.WidgetBox(p)
+gspec[:4, 1:3] = pn.WidgetBox(pn.Row(pn.pane.HTML('<h2>Mapa</h2>',margin=(0,0,0,10)),   pn.Spacer(sizing_mode='stretch_width'),
+                                pn.pane.SVG(svg_subject, margin=(5,5,0,0), css_classes=['subheader'])),
+                            p)
 gspec[2:4, 0] = pn.WidgetBox(p123)
 # gspec[3:5, 1] = 'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png'
 # gspec[4:5, 2] = pn.Column(
@@ -451,11 +481,62 @@ gspec[2:4, 0] = pn.WidgetBox(p123)
 #     pn.widgets.ColorPicker(),
 #     pn.widgets.Toggle(name='Toggle Me!'))
 
+s = ''
+for icon in range(5,6):
+  icon = 's' + str(icon)
+  s = f"""
+  <script>
+    console.log(document.getElementsByClassName('{icon}')[0]);
+    let NumberSpan{icon} = document.createElement('span');
+    NumberSpan{icon}.style.position = 'relative';
+    NumberSpan{icon}.innerHTML = '';
+    NumberSpan{icon}.style.top = '-75px';
+    NumberSpan{icon}.style.left = '-1px';
+    NumberSpan{icon}.style.backgroundColor = '';
+    NumberSpan{icon}.style.borderRadius = '5px';
+    NumberSpan{icon}.style.fontSize = '12pt';
+    NumberSpan{icon}.style.padding = '2px';
+    document.getElementsByClassName('{icon}')[0].appendChild(NumberSpan{icon});
+  </script>
+  """
+  icon_numbers.object = s
 
+
+
+
+def get_counting(val):
+  icon = 's5'
+  if val!=0: 
+    s = f"""
+    <script>
+      console.log('ico1');
+      document.getElementsByClassName('{icon}')[0].childNodes[1].innerHTML = '{str(val)}';
+      document.getElementsByClassName('{icon}')[0].childNodes[1].style.backgroundColor = 'red';
+      console.log('ico2');
+    </script>
+    """
+   
+  else: 
+    s = f"""
+    <script>
+      console.log('ico1');
+      document.getElementsByClassName('{icon}')[0].childNodes[1].innerHTML = '';
+      document.getElementsByClassName('{icon}')[0].childNodes[1].style.backgroundColor = '#2f2f31';
+      console.log('ico2');
+    </script>
+    """
+  
+  icon_numbers.object = s
+ 
+
+pn.bind(get_counting, sli.param.value, watch=True)
 
 col2 = pn.Column(header, 
             pn.Spacer(sizing_mode='stretch_width', height=5, css_classes = ['header_bar']),
             sub_header,  gspec,
             sizing_mode='stretch_width')
+
+# pn.state.onload(load)
+
 
 pn.Row(col,col2, margin=0, sizing_mode='stretch_both').servable()
